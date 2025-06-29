@@ -1,7 +1,7 @@
 import socket
 import threading
 
-# Escanea un puerto y muestra si está abierto. Intenta recuperar banner.
+# Escaneja un port y mostra si esta obert. Recupera el banner.
 def scan_port(target, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.settimeout(1)
@@ -9,10 +9,10 @@ def scan_port(target, port):
         if result == 0:
             print(f"[+] Port {port} is OPEN")
             try:
-                sock.sendall(b'Hello\r\n')
-                banner = sock.recv(1024)
+                sock.sendall(b'Hello\r\n') # 
+                banner = sock.recv(1024) # Llegeix 1024 bytes de resposta, si es reben es guarden al banner.
                 if banner:
-                    print(f"    Banner: {banner.decode().strip()}")
+                    print(f"    Banner: {banner.decode().strip()}") ## Convertim els bytes a string i imprimim el contingut.
             except:
                 pass
 
